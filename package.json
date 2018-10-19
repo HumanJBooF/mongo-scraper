@@ -4,7 +4,8 @@
   "description": "a news scrapper using mongo",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "mon": "nodemon server.js",
     "up": "docker-compose -f docker-compose.yml up -d",
     "stop": "docker-compose -f docker-compose.yml stop"
   },
