@@ -4,9 +4,9 @@ const cheerio = require('cheerio');
 const db = require('../models')
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+// router.get('/', (req, res) => {
+//     res.render('index');
+// });
 
 router.get('/scrape', (req, res) => {
     axios.get('https://www.pcgamer.com/news/')
@@ -65,7 +65,7 @@ router.get('/scrape', (req, res) => {
 router.get('/', (req, res) => {
     db.News.find({}).then(dbNews => {
         console.log(dbNews, 'DBNEWS');
-        let hbsObj = {
+        const hbsObj = {
             news: dbNews
         };
         // console.log(hbsObj);

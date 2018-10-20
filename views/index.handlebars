@@ -1,10 +1,15 @@
 <h1>Test</h1>
 <div class="test">
-
+    {{#if news}}
     {{#each news}}
-    <h1>{{news.title}}</h1>
-    <a href={{news.link}}>{{news.link}}</a>
+    <h4>{{this.title}}</h4>
+    <a href={{this.link}}>{{this.link}}</a>
+    <img src={{this.image}} alt="test">
+    <p>{{this.body}}</p>
+    <div class="by">
+        <p>{{this.author}}</p>
+        <time datetime={{this.date}}></time>
+    </div>
     {{/each}}
-
-
+    {{/if}}
 </div>
