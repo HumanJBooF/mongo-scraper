@@ -31,6 +31,10 @@ const NewsSchema = new Schema({
         type: Boolean,
         default: false,
         required: false
+    },
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: 'Note'
     }
 });
 
