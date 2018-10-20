@@ -14,8 +14,8 @@ router.get('/scrape', (req, res) => {
             const $ = cheerio.load(response.data);
             // console.log($)
             $('.listingResult.small').each(function (i, elem) {
-                let $this = $(this);
-                let results = {};
+                const $this = $(this);
+                const results = {};
 
                 results.link = $this
                     .children('a')
