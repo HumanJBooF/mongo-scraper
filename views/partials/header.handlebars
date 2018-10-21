@@ -1,3 +1,25 @@
-<header class="pcGamer">
-    <img src="./assets/img/pcGamer.png" alt="pcGamer">
-</header>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">
+            Mongo Scraper
+        </a>
+        <a href="#" data-target="sideNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/saved">Saved Articles</a></li>
+            <li><a class="waves-effect waves-red btn scraped">Scrape Again</a></li>
+            <li><a class="waves-effect waves-red btn clear">Clear News</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="sideNav">
+    <li>
+        <div class="background">
+            <img class="responsive-img" src="/assets/img/pcGamer.png" alt="pcGamer">
+        </div>
+    </li>
+    <div class="divider"></div>
+    <li><a href="/saved">Saved Articles</a></li>
+    <li><a href="#!" class="scraped">Scrape Again</a> </li>
+    <li><a href="#!" class="clear">Clear News</a></li>
+</ul>

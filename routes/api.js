@@ -4,15 +4,10 @@ const cheerio = require('cheerio');
 const db = require('../models')
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//     res.render('index');
-// });
-
-router.get('/scrape', (req, res) => {
+router.get('/api/scrape', (req, res) => {
     axios.get('https://www.pcgamer.com/news/')
         .then(response => {
             const $ = cheerio.load(response.data);
-            // console.log($)
             $('.listingResult.small').each(function (i, elem) {
                 const $this = $(this);
                 const results = {};
@@ -33,8 +28,11 @@ router.get('/scrape', (req, res) => {
                     .find('time')
                     .attr('datetime');
                 results.body = $this
-                    .find('.synopsis')
-                    .text()
+                    .find('.synopsis') // the synopsis had a span class in it and I did not want the text from that So this is how I removed that part
+                    .find('span.free-text-label')
+                    .remove()
+                    .end()
+                    .text();
 
                 console.log(results);
 
@@ -52,11 +50,6 @@ router.get('/scrape', (req, res) => {
                         console.log(`already in your database!`)
                     }
                 })
-                // db.News.create(results).then(dbNews => {
-                //     console.log(dbNews);
-                // }).catch(err => {
-                //     return res.json(err);
-                // });
             });
             res.redirect('/');
         });
@@ -75,4 +68,7 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/saved', (req, res) => {
+    res.render('saved')
+})
 module.exports = router;

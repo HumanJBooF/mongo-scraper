@@ -15,14 +15,6 @@ const NewsSchema = new Schema({
         type: String,
         required: true
     },
-    author: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
     body: {
         type: String,
         required: true
@@ -32,10 +24,10 @@ const NewsSchema = new Schema({
         default: false,
         required: false
     },
-    note: {
+    note: [{
         type: Schema.Types.ObjectId,
         ref: 'Note'
-    }
+    }]
 });
 
 const News = mongoose.model("News", NewsSchema);

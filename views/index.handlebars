@@ -1,15 +1,25 @@
-<h1>Test</h1>
-<div class="test">
-    {{#if news}}
-    {{#each news}}
-    <h4>{{this.title}}</h4>
-    <a href={{this.link}}>{{this.link}}</a>
-    <img src={{this.image}} height="200px" alt="test">
-    <p>{{this.body}}</p>
-    <div class="by">
-        <p>{{this.author}}</p>
-        <time datetime={{this.date}}></time>
+{{> middle}}
+<div class="section grey lighten-2 news">
+    <div class="row container-fluid">
+        {{#if news}}
+        {{#each news}}
+
+        <a class="links" href={{this.link}}>
+            <div class="col s12 l4">
+                <div class="card large hoverable">
+                    <div class="card-image">
+                        <img src={{this.image}}>
+                    </div>
+        </a>
+        <div class="card-content">
+            <a href={{this.link}}>
+                <h5 class="title">{{this.title}}</h5>
+            </a>
+            <p class="body">{{this.body}}</p>
+            <div class="card-content">
+                <a class="waves-effect waves-red btn" data-id={{this._id}}>Save</a>
+            </div>
+        </div>
     </div>
-    {{/each}}
-    {{/if}}
+</div> {{/each}} {{/if}} </div>
 </div>
