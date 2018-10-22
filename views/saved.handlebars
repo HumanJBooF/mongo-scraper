@@ -3,7 +3,6 @@
     <div class="row container-fluid">
         {{#if news}}
         {{#each news}}
-
         <a class="links" href={{this.link}}>
             <div class="col s12 l4">
                 <div class="card large hoverable">
@@ -25,3 +24,4 @@
 </div>
 {{/each}}
 {{/if}}
+{{>noteModal}}

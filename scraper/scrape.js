@@ -7,26 +7,25 @@ const scrapePcNews = (_cb) => {
     axios.get('https://www.pcgamer.com/news/')
         .then(response => {
             const $ = cheerio.load(response.data);
-            $('.listingResult.small').each(function (i, elem) {
-                const $this = $(this);
+            $('.listingResult.small').each((i, element) => {
                 const results = {};
 
-                results.link = $this
+                results.link = $(element)
                     .children('a')
                     .attr('href');
-                results.image = $this
+                results.image = $(element)
                     .find('figure')
                     .data('original');
-                results.title = $this
+                results.title = $(element)
                     .find('h3.article-name')
                     .text();
-                results.author = $this
+                results.author = $(element)
                     .find('span.by-author')
                     .text();
-                results.time = $this
+                results.time = $(element)
                     .find('time')
                     .attr('datetime');
-                results.body = $this
+                results.body = $(element)
                     .find('.synopsis') // the synopsis had a span class in it and I did not want the text from that So this is how I removed that part
                     .find('span.free-text-label')
                     .remove()

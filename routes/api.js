@@ -1,6 +1,4 @@
 const express = require('express');
-// const axios = require('axios');
-// const cheerio = require('cheerio');
 const db = require('../models');
 const scraper = require('../scraper/scrape');
 const router = express.Router();
@@ -37,17 +35,43 @@ router.post('/saved/:id', (req, res) => {
         });
 });
 
+router.post('/note/:id', (req, res) => {
+    const id = req.params.id;
+    const title = req.body.title;
+    const note = req.body.note;
+    const noteObj = {
+        title: title,
+        note: note
+    };
+    db.Note.create(noteObj).then(newNote => {
+        db.News.findOneAndUpdate({ _id: id }, { $push: { note: newNote._id } }, { new: true })
+            .then(() => console.log(newNote))
+            .catch(err => console.log(err))
+    }).catch(err => console.log(err))
+
+})
+
 router.get('/saved', (req, res) => {
-    db.News.find({ saved: true }).then(savedNews => {
-        const saved = {
-            news: savedNews
-        };
-        console.log(`SAVED: ${saved.news}`)
-        res.render('saved', saved);
-    }).catch(err => {
-        res.json(`ERROR: ${err}`);
-        console.log(`ERROR ${err}`);
-    })
+    db.News.find({ saved: true })
+        .then(savedNews => {
+            const saved = {
+                news: savedNews
+            };
+            console.log(`SAVED: ${saved.news}`)
+            res.render('saved', saved);
+        }).catch(err => {
+            res.json(`ERROR: ${err}`);
+            console.log(`ERROR ${err}`);
+        })
+
 });
+
+router.get('/note/:id', (req, res) => {
+    const id = req.params.id;
+    db.News.findOne({ _id: id })
+        .populate('note').then(notes => {
+            res.json(notes)
+        }).catch(err => console.log(err));
+})
 
 module.exports = router;
