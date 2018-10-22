@@ -1,1 +1,27 @@
-<h1>test</h1>
+{{> savedMiddle}}
+<div class="section grey lighten-2 news">
+    <div class="row container-fluid">
+        {{#if news}}
+        {{#each news}}
+
+        <a class="links" href={{this.link}}>
+            <div class="col s12 l4">
+                <div class="card large hoverable">
+                    <div class="card-image">
+                        <img src={{this.image}}>
+                    </div>
+        </a>
+        <div class="card-content">
+            <a href={{this.link}}>
+                <h5 class="title">{{this.title}}</h5>
+            </a>
+            <p class="body">{{this.body}}</p>
+            <div class="card-content">
+                <a class="waves-effect waves-red btn notes modal-trigger" href="#modal1" data-id={{this._id}}>Notes</a>
+                <a class="waves-effect waves-red btn deleteSaved" data-id={{this._id}}>Delete from saved</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{/if}}

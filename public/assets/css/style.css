@@ -13,3 +13,11 @@ body {
 .title, .body {
     color: black !important;
 }
+
+.card.large {
+    border: 1pt solid !important;
+}
+
+.parallax-container {
+    height: 300px !important;
+}

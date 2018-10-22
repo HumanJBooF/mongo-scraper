@@ -1,8 +1,10 @@
 $(function () {
 
     const newsSection = $('.news');
-    const scrapeBtn = $('.scraped');
     const clearBtn = $('.clear');
+    const scrapeBtn = $('.scraped');
+    const saveBtn = $('.save');
+
 
     const scrapeAgain = () => {
         $.get('/api/scrape')
@@ -11,14 +13,19 @@ $(function () {
             });
     }
 
-    const clearNews = () => {
-        newsSection.empty();
+    // const clearNews = () => {
+    //     newsSection.empty();
+    // }
+
+    const saveNews = function () {
+        newsId = $(this).attr('data-id');
+        console.log(newsId);
+        $.post(`/saved/${newsId}`)
     }
 
-
-
+    saveBtn.on('click', saveNews);
     scrapeBtn.on('click', scrapeAgain);
-    clearBtn.on('click', clearNews);
+    // clearBtn.on('click', clearNews);
 
     $('.sidenav').sidenav();
     $('.parallax').parallax();
