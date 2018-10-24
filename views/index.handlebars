@@ -5,7 +5,7 @@
         {{#each news}}
 
         <a class="links" href={{this.link}}>
-            <div class="col s12 l4">
+            <div class="col s12 l3 newsCard">
                 <div class="card large hoverable">
                     <div class="card-image">
                         <img src={{this.image}}>
@@ -13,14 +13,25 @@
         </a>
         <div class="card-content">
             <a href={{this.link}}>
-                <h5 class="title">{{this.title}}</h5>
+                <h6 class="title"><strong>{{this.title}}</strong></h6>
             </a>
             <p class="body">{{this.body}}</p>
-            <div class="card-content">
+            <div class="card-action">
                 <a class="waves-effect waves-red btn save" data-id={{this._id}}>Save</a>
             </div>
         </div>
     </div>
 </div>
 {{/each}}
+{{else}}
+<div class="section grey lighten-2 bottomFront">
+    <div class="container-fluid center">
+        <div class="row">
+            <h3>There seems to be no news! <br>try scraping!</h3>
+        </div>
+        <div class="row">
+            <a class="waves-effect waves-red btn scraped">Scrape some news</a>
+        </div>
+    </div>
+</div>
 {{/if}}

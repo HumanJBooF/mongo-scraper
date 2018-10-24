@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const db = require('../models');
 
 
+
 const scrapePcNews = (_cb) => {
     axios.get('https://www.pcgamer.com/news/')
         .then(response => {
@@ -24,7 +25,7 @@ const scrapePcNews = (_cb) => {
                     .text();
                 results.time = $(element)
                     .find('time')
-                    .attr('datetime');
+                    .attr('datetime')
                 results.body = $(element)
                     .find('.synopsis') // the synopsis had a span class in it and I did not want the text from that So this is how I removed that part
                     .find('span.free-text-label')
@@ -32,6 +33,7 @@ const scrapePcNews = (_cb) => {
                     .end()
                     .text();
 
+                // moment(results.time).format('YYYY-MM-DD h:mm A');
                 console.log(results);
 
                 db.News.findOne({ title: results.title }, (err, doc) => {

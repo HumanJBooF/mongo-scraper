@@ -19,6 +19,10 @@ const NewsSchema = new Schema({
         type: String,
         required: true
     },
+    time: {
+        type: Date,
+        required: true
+    },
     saved: {
         type: Boolean,
         default: false,

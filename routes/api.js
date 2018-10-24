@@ -10,8 +10,7 @@ router.get('/api/scrape', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    db.News.find({}).then(dbNews => {
-        // console.log(dbNews, 'DBNEWS');
+    db.News.find({ saved: false }).sort({ time: -1 }).then(dbNews => {
         const hbsObj = {
             news: dbNews
         };
@@ -53,6 +52,7 @@ router.post('/note/:id', (req, res) => {
 
 router.get('/saved', (req, res) => {
     db.News.find({ saved: true })
+        .sort({ time: -1 })
         .then(savedNews => {
             const saved = {
                 news: savedNews
@@ -72,6 +72,26 @@ router.get('/note/:id', (req, res) => {
         .populate('note').then(notes => {
             res.json(notes)
         }).catch(err => console.log(err));
+});
+
+router.delete('/note/delete/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    db.Note.findByIdAndDelete({ _id: id })
+        .then(dbNote => {
+            return db.News.findOneAndUpdate({ note: id }, { $pullAll: [{ note: id }] });
+        }).then(dbNews => {
+            console.log(`Goodbye note!`);
+        }).catch(err => console.log(`ERROR: ${err}`));
+});
+
+router.post('/unsave/:id', (req, res) => {
+    const id = req.params.id;
+    const update = { _id: id };
+    db.News.findByIdAndUpdate(update, { saved: false })
+        .then(unsaved => {
+            console.log(`you unsaved: ${unsaved}`);
+        }).catch(err => console.log(`ERRROR: ${err}`));
 })
 
 module.exports = router;

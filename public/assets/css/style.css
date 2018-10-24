@@ -1,5 +1,13 @@
 body {
-    background: #cccccc !important;
+    background: rgb(223, 223, 223) !important;
+}
+
+nav {
+    background: #1A081F !important;
+}
+
+.btn {
+    border: 1pt solid black !important;
 }
 
 .pcGamer {
@@ -20,4 +28,9 @@ body {
 
 .parallax-container {
     height: 300px !important;
+    border-bottom: 2pt inset;
+}
+
+.bottomFront {
+    height: 100% !important;
 }
