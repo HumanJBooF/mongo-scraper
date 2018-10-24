@@ -66,7 +66,7 @@ $(function () {
             notes.forEach((note) => {
                 console.log(note)
                 const $col = $(`<div class='col s12 l4 noteCard'>`);
-                const $card = $(`<div class='card small'>`);
+                const $card = $(`<div class='card small hoverable'>`);
                 const $cContent = $(`<div class='card-content'>`)
                 const $h3 = $(`<div class='row'><h3>${note.title}</h3></div>`);
                 const $p = $(`<div class='row'><p class='noteNote'>${note.note}</p></div>`);

@@ -22,7 +22,7 @@ nav {
     color: black !important;
 }
 
-.card.large {
+.card.large, .card.small {
     border: 1pt solid !important;
 }
 
