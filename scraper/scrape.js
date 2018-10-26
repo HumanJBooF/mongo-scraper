@@ -27,14 +27,14 @@ const scrapePcNews = (_cb) => {
                     .find('time')
                     .attr('datetime')
                 results.body = $(element)
-                    .find('.synopsis') // the synopsis had a span class in it and I did not want the text from that So this is how I removed that part
+                    // the synopsis had a span class in it and I did not want the text from that So this is how I removed that part
+                    .find('.synopsis')
                     .find('span.free-text-label')
                     .remove()
                     .end()
                     .text();
 
-                // moment(results.time).format('YYYY-MM-DD h:mm A');
-                console.log(results);
+                console.log(`RESULTS: ${results}`);
 
                 db.News.findOne({ title: results.title }, (err, doc) => {
                     if (!doc) {

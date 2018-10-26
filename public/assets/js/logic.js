@@ -62,7 +62,7 @@ $(function () {
         $note.val('');
         $.get(`/note/${id}`).then(data => {
             const notes = data.note;
-            console.log(data, 'WHAWRHIKWTHWAK:THKTWHK:')
+            console.log(`/note/:id DATA: ${data}`)
             notes.forEach((note) => {
                 console.log(note)
                 const $col = $(`<div class='col s12 l4 noteCard'>`);
@@ -92,6 +92,7 @@ $(function () {
         });
     }
 
+    // onclick events
     $deleteSave.on('click', unSaveNews);
     $saveBtn.on('click', saveNews);
     $scrapeBtn.on('click', scrapeAgain);

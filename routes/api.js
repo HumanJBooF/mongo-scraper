@@ -43,7 +43,8 @@ router.post('/note/:id', (req, res) => {
         note: note
     };
     db.Note.create(noteObj).then(newNote => {
-        db.News.findOneAndUpdate({ _id: id }, { $push: { note: newNote._id } }, { new: true })
+        db.News.findOneAndUpdate({ _id: id },
+            { $push: { note: newNote._id } }, { new: true })
             .then(() => console.log(newNote))
             .catch(err => console.log(err))
     }).catch(err => console.log(err))
