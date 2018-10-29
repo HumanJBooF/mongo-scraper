@@ -31,7 +31,7 @@ I built this app using axios to scrape the pcgamer news website, it is up to dat
 
 ## Instructions for local use
 
- - Git-Clone to repo to a spot on your desktop
+ - Git-Clone the repo to a spot on your desktop
     - Use docker or (docker toolbox if windows) to do this if you dont have mongodb installed locally
  - cd to the repo
      - (if you do not wish to use docker skip these next steps)
