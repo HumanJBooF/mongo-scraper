@@ -7,7 +7,7 @@
 
 I built this app using axios to scrape the pcgamer news website, it is up to date with all the current news, in order. This app uses mongodb to save the news. For each news article you can save, and you can add a note to each saved article, if there is already a note you will see it. You have the ability to delete notes, and remove news from saved. This was built in a docker container and has been put on heroku.
 
-![scraper](public/assets/img/Mongo-scraper.gif)
+![scraper](./public/assets/img/Mongo-Scraper.gif)
 
 ## Technologies used
 - Node.js
